@@ -1,0 +1,43 @@
+body{
+  background-color :hsl(114, 11%, 88%);
+
+
+}
+header {
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  line-height: 50px;
+  background-color : hsl(0, 0%, 50%);
+  top: 0;
+  left: 0;
+  font-size:36px;
+}
+
+.main{
+	margin-top:50px;
+	width:100%;
+	display:inline-block;
+  
+
+}
+
+#reg{
+	float:left;
+	display:inline-block;
+ 
+  margin-left:50px;
+  width:40%;
+  top:50px;
+}
+
+
+
+#login{
+	
+	float:left;
+  top:50px;
+	width:40%;
+  margin-left:50px;
+	display:inline-block;
+}

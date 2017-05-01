@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main_page.css"/>
+<script src="/javascripts/main_page.js"></script>
+	
+</head>
+<body>
+
+
+<div id="mySidenav" class="sidenav">
+  <ul>
+      
+      <li><a href="javascript:void(0)" class="closebtn toggle-nav" >&times;</a>
+      
+      </li>
+      <li><span class="Brand_Name">Name</span>
+      </li>
+      <li><a href="#">About</a></li>
+      <li><a href="/users/get_stock">Stock</a></li>
+      <li><a href="#">Clients</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Cossct</a></li>
+      <li><a href="/logout">Logout</a></li>
+</div>
+
+	<div class="main_wrapper">
+
+	<div id="header" class="_header">
+		  <ul>
+			<li><span style="font-size:30px;cursor:pointer" class="toggle-nav">&#9776;</span>
+			</li>
+			<li><a>Alert</a></li>
+			<li><a>Robin Brons</a></li>
+		  </ul>
+	</div>
+		
+		<div id="main">
+			<ul>
+	        <form id="form" action="/users/search_stock" method="POST">				
+					Name：<br><input type="text" name="name"><br>
+					Price：<br><input type="text" name="price"><br>
+					Date：<br><input type="text" name="date"><br>
+					Publishment：<br><input type="text" name="publishment"><br>
+                    Store：<br><input type="text" name="store"><br>
+					Amount：<br><input type="text" name="amount"><br>
+					Category：<br><input type="text" name="category"><br>
+				<input id="bt_log" type="submit" value="Send"> </input>
+
+		    </form>
+			</ul>
+      
+            <% if(typeof results != 'undefined' && results!=""){ %>
+             <table class="data_table">
+                    <tr>
+                      <th>BookName</th>
+                      <th>Price</th>
+                      <th>Date</th>
+                      <th>Publishment</th>
+                      <th>Store</th>
+                      <th>Amount</th>
+                      <th>Category</th>
+                    </tr>
+            
+           <% for(var i in results){ console.log("ha"+results[0].book)%>
+
+                    <tr>
+                      <td><%=results[i].name %></td>
+                      <td><%=results[i].price %></td>
+                      <td><%=results[i].date %></td>
+                      <td><%=results[i].publishment %></td>
+                      <td><%=results[i].store %></td>
+                      <td><%=results[i].amount %></td>
+                      <td><%=results[i].category %></td>
+                     </tr>
+              
+              
+              <% } %>
+                </table>
+             <% } %>
+		</div>
+
+
+
+</div>
+
+     
+</body>
+</html> 
+

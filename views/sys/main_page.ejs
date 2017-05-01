@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main_page.css"/>
+<script src="/javascripts/main_page.js"></script>
+	
+</head>
+<body>
+
+
+<div id="mySidenav" class="sidenav">
+  <ul>
+      
+      <li><a href="javascript:void(0)" class="closebtn toggle-nav" >&times;</a>
+      
+      </li>
+      <li><span class="Brand_Name">Name</span>
+      </li>
+      <li><a href="#">About</a></li>
+      <li><a href="/users/get_stock">Stock</a></li>
+      <li><a href="#">Clients</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Cossct</a></li>
+      <li><a href="/logout">Logout</a></li>
+</div>
+<div class="main_wrapper">
+
+<div id="header" class="_header">
+      <ul>
+        <li><span style="font-size:30px;cursor:pointer" class="toggle-nav">&#9776;</span>
+        </li>
+        <li><a>Alert</a></li>
+        <li><a>Robin Brons</a></li>
+      </ul>
+      
+</div>
+
+
+<div id="main">
+    <h2>Sidenav Push Example</h2>
+  <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+
+        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
+
+        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+
+        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+
+        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
+
+        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+
+        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+
+        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
+        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+
+        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
+
+        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+<p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+
+        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
+
+        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+
+        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+</div>
+
+
+</div>
+<script>
+
+$(document).keyup(function(e) {
+	if (e.keyCode == 27) {
+    if($('#mySidenav').width()==0){
+        $('#mySidenav').width(250);
+        $('#main').css('margin-left','250px');
+        $('#header').css('margin-left','250px');        
+    }
+    else {
+        $('#mySidenav').width(0);
+        $('#main').css('margin-left','0');
+        $('#header').css('margin-left','0');
+    }
+  }
+});
+$(function() {
+  $('.toggle-nav').click(function() {
+    if($('#mySidenav').width()==0){
+        $('#mySidenav').width(250);
+        $('#main').css('margin-left','250px');
+        $('#header').css('margin-left','250px');    
+    }
+    else {
+        $('#mySidenav').width(0);
+        $('#main').css('margin-left','0');
+        $('#header').css('margin-left','0');    
+    }    
+  });  
+});
+
+$(function() {
+  $('.toggle-nav').click(function() {
+    if($('#mySidenav').width()==0){
+        $('#mySidenav').width(250);
+        $('#main').css('margin-left','250px');
+        $('#header').css('margin-left','250px');    
+    }
+    else {
+        $('#mySidenav').width(0);
+        $('#main').css('margin-left','0');
+        $('#header').css('margin-left','0');    
+    }    
+  });  
+});
+
+
+/*
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.getElementById("header").style.marginLeft = "250px";
+}
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("header").style.marginLeft = "0";
+}*/
+
+</script>
+     
+</body>
+</html> 
+
