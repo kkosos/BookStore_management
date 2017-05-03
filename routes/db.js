@@ -1,6 +1,6 @@
 
 var mysql = require('mysql');
-var DB_NAME = 'TEST';
+var DB_NAME = 'BookStore';
 var db=null;
 module.exports = function () {
     if(!db) {

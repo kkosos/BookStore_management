@@ -1,41 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="semUI_out/semantic.min.css">
-	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
-	<script src="/jquery/jquery.min.js"></script>
-	<script src="semUI_out/semantic.min.js"></script>
 
-	<script src="/javascripts/main_page.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main_page.css"/>
+<script src="/javascripts/main_page.js"></script>
 	
 </head>
 <body>
 
-<div class="ui fixed menu">
-  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
-  <div class="right menu">
-    <a class="item"><i class="user icon"></i>User</a>
-    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
-  </div>
-</div>
-
-<div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a class="item" href="/">
-    <i class="home icon"></i>
-    About
-  </a>
-  <a class="item" href="/users/get_stock">
-    <i class="block layout icon"></i>
-    Stock
-  </a>
-  <a class="item">
-    <i class="smile icon"></i>
-    Clients
-  </a>
-</div>
-
-
-<!--
 
 <div id="mySidenav" class="sidenav">
   <ul>
@@ -63,10 +36,9 @@
       </ul>
       
 </div>
--->
 
 
-<div id="main" class="ui grid">
+<div id="main">
     <h2>Sidenav Push Example</h2>
   <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
 
@@ -103,19 +75,18 @@
 
 $(document).keyup(function(e) {
 	if (e.keyCode == 27) {
-
-	$('.ui.labeled.icon.sidebar')
-  .sidebar('toggle')
-;
+    if($('#mySidenav').width()==0){
+        $('#mySidenav').width(250);
+        $('#main').css('margin-left','250px');
+        $('#header').css('margin-left','250px');        
+    }
+    else {
+        $('#mySidenav').width(0);
+        $('#main').css('margin-left','0');
+        $('#header').css('margin-left','0');
+    }
   }
 });
-$(function() {
-  $('#side_bar_list').click(function() {
-    $('.ui.labeled.icon.sidebar').sidebar('toggle')
-  });  
-});
-
-
 $(function() {
   $('.toggle-nav').click(function() {
     if($('#mySidenav').width()==0){

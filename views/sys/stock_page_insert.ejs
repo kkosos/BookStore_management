@@ -2,40 +2,38 @@
 <html>
 <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main_page.css"/>
-<script src="/javascripts/main_page.js"></script>
+<link rel="stylesheet" type="text/css" href="/semUI_out/semantic.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
+	<script src="/jquery/jquery.min.js"></script>
+	<script src="/semUI_out/semantic.min.js"></script>
+	<script src="/javascripts/main_page.js"></script> 
 	
 </head>
 <body>
 
 
-<div id="mySidenav" class="sidenav">
-  <ul>
-      
-      <li><a href="javascript:void(0)" class="closebtn toggle-nav" >&times;</a>
-      
-      </li>
-      <li><span class="Brand_Name">Name</span>
-      </li>
-      <li><a href="#">About</a></li>
-      <li><a href="/users/get_stock">Stock</a></li>
-      <li><a href="#">Clients</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Cossct</a></li>
-      <li><a href="/logout">Logout</a></li>
+<div class="ui fixed menu">
+  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
+  <div class="right menu">
+    <a class="item"><i class="user icon"></i>User</a>
+    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
+  </div>
 </div>
 
-	<div class="main_wrapper">
-
-	<div id="header" class="_header">
-		  <ul>
-			<li><span style="font-size:30px;cursor:pointer" class="toggle-nav">&#9776;</span>
-			</li>
-			<li><a>Alert</a></li>
-			<li><a>Robin Brons</a></li>
-		  </ul>
-	</div>
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    About
+  </a>
+  <a class="item" href="/users/get_stock">
+    <i class="block layout icon"></i>
+    Stock
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Clients
+  </a>
+</div>
 		
 		<div id="main">
 			<ul>
@@ -55,7 +53,6 @@
 
 
 
-</div>
 
      
 </body>

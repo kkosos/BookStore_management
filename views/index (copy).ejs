@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/>
+	<script src="jquery/dist/jquery.min.js"></script>
+	<script src="jquery/dist/semantic.min.js"></script>
+	</head>
+		<header>
+		ManageEveryWhere
+		</header>
+		
+		<div class="main">
+		<% if(error_msg!="") {%>
+					<h3><%= error_msg %><h3>
+				<% } %>
+			<div id="reg"  >
+				<h1>Register</h1>
+				<form id="form" action="/reg" method="POST">
+				
+					Account：<br><input type="text" name="username"><br>
+					password：<br><input type="text" name="password"><br>
+					Authentication：<br><input type="text" name="auth_level"><br>
+					Store_location：<br><input type="text" name="location"><br>
+				<input id="bt_log" type="submit" value="登入"> </input>
+
+				</form>
+			</div>
+		
+			<div id="login"  >
+				<h1>Login</h1>
+			
+				<form id="form" action="/login" method="POST">
+				
+					Account：<br><input type="text" name="username"><br>
+					Password：<br><input type="text" name="password"><br>			   
+				<input id="bt_log" type="submit" value="登入"> </input>
+
+				</form>
+			</div>
+		</div>
+    </body>
+</html>

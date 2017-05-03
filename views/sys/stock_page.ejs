@@ -2,12 +2,52 @@
 <html>
 <head>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link rel = "stylesheet" type = "text/css" href = "/stylesheets/main_page.css"/>
-<script src="/javascripts/main_page.js"></script>
+	<link rel="stylesheet" type="text/css" href="/semUI_out/semantic.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
+	<script src="/jquery/jquery.min.js"></script>
+	<script src="/semUI_out/semantic.min.js"></script>
+	<script src="/javascripts/main_page.js"></script> 
 	
 </head>
 <body>
+
+
+<div class="ui fixed menu">
+  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
+  <div class="right menu">
+    <a class="item"><i class="user icon"></i>User</a>
+    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
+  </div>
+</div>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    About
+  </a>
+  <a class="item" href="/users/get_stock">
+    <i class="block layout icon"></i>
+    Stock
+  </a>
+  <a class="item">
+    <i class="smile icon"></i>
+    Clients
+  </a>
+</div>
+
+
+<div id="main" class="ui grid" >
+			<ul>
+			        <li><a href="/users/get_stock_insert">Insert</a></li>
+      			        <li><a href="/users/get_stock_list">Search</a></li>
+				
+			</ul>
+		</div>
+
+
+<!--
+
+
 
 
 <div id="mySidenav" class="sidenav">
@@ -41,17 +81,16 @@
 		
 		<div id="main">
 			<ul>
-			      <li><a href="/users/get_stock_insert">Insert</a></li>
-      			  <li><a href="/users/get_stock_search">Search</a></li>
+			        <li><a href="/users/get_stock_insert">Insert</a></li>
+      			        <li><a href="/users/get_stock_list">Search</a></li>
+				
 			</ul>
-			
-			
 		</div>
 
 
 
 </div>
-
+-->
      
 </body>
 </html> 

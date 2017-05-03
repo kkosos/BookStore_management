@@ -1,8 +1,8 @@
-body{
+/*body{
   background-color :hsl(114, 11%, 88%);
 
 
-}
+}*/
 header {
   width: 100%;
   position: fixed;
@@ -13,7 +13,17 @@ header {
   left: 0;
   font-size:36px;
 }
+.all{
+	margin-top:50px;
 
+}
+
+#main{
+	margin-top:50px;
+
+}
+
+/*
 .main{
 	margin-top:50px;
 	width:100%;
@@ -40,4 +50,4 @@ header {
 	width:40%;
   margin-left:50px;
 	display:inline-block;
-}
+}*/

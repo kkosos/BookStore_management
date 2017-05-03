@@ -8,7 +8,8 @@ var connection = db();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.session.logined){res.render('sys/main_page');return;}
-  res.render('index', { error_msg: '' });
+   res.locals.error="";
+  res.render('index');
 });
 
 router.get('/main', function(req, res, next) {
@@ -26,8 +27,15 @@ router.post('/reg', function(req, res, next) {
   console.log("reg...");
     var username=req.body['username'],
         password=req.body['password'],
+	password2=req.body['password2'],
         auth_level=req.body['auth_level'],
         location=req.body['location'];
+     if(password!=password2){
+	  res.locals.error =  {type:0,text:"Username exists."}
+	
+          res.render('index');   
+	  return;      
+	}
      var sql_str = "SELECT * FROM Staff_status WHERE  Username=?"
      connection.query(sql_str,username, function(err, results) {
         if (err) {
@@ -35,7 +43,11 @@ router.post('/reg', function(req, res, next) {
         }
         if(results!=""){
           console.log("Already exist");
-          res.redirect('/reg_error');          
+          //res.redirect('/reg_error'); 
+		 var error_str = {type:0,text:"Username exists."}
+		   res.locals.error=error_str||null;
+		 res.render('index');
+         
         }
          else{
                 var sql_str = "INSERT INTO Staff_status (Username,password,auth_level,location,backup) value('"+username+"','"+password+"',"+auth_level+",'"+location+"',null)"
@@ -83,18 +95,19 @@ router.post('/login', function(req, res, next) {
                res.render('index', { title: 'Express' });
             }
             else {
-              console.log("right")
+             // console.log("right")
              
               res.locals.username = username;
-              console.log(req.session)
+
             //設定session
               req.session.username = username; 
-               
+              req.session.store = results[0].location;
               req.session.logined=true;
               res.locals.authenticated = req.session.logined;
+  	      console.log(req.session.store);
               //res.redirect('/');
                console.log("done")
-               res.redirect('/');
+               //res.redirect('/');
                res.render('sys/main_page', { title: 'Express' });
             }
         }
@@ -105,9 +118,9 @@ router.post('/login', function(req, res, next) {
 
 router.get('/login_error',function(req,res){
 
-  var error_str = "Username or password wrong."
-   
-  res.render('index', { error_msg: error_str ||null});
+  var error_str = {type:1,text:"Username or password wrong."}
+   res.locals.error=error_str||null;
+  res.render('index');
 });
 
 router.get('/logout', function(req, res) {
@@ -118,8 +131,8 @@ router.get('/logout', function(req, res) {
 
 router.get('/reg_error', function(req, res) {
  var error_str = "Username exists."
-   
- res.render('index', { error_msg: error_str ||null});
+   res.locals.error=error_str||null;
+ res.render('index');
 });
 
 

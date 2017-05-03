@@ -55,18 +55,13 @@ router.post('/input_stock',function(req,res,next){
 });
 
 
-function StrAdd(str,str_add){
-  str = str+str_add
-  console.log("haha"+str)
-  return str;
-}
 
 
 router.post('/search_stock',function(req,res,next){
   /*if(req.body.name==""||req.body.price==""||req.body.date==""||req.body.publishment==""||req.body.store==""||req.body.amount==""||req.body.category==""){    
     res.redirect('/get_stock_insert')
     return
-  }*/
+  }//*/
   var count_flag=0;
   var book_name=req.body['name'],
       book_price=req.body['price'],
@@ -87,15 +82,17 @@ router.post('/search_stock',function(req,res,next){
      if(book_store!=""){if(count_flag)sql_str+=" AND";sql_str+=" store='"+book_store+"' ";count_flag++;}
      if(book_amount!=""){if(count_flag)sql_str+=" AND";sql_str+=" amout="+book_amount+" ";count_flag++;}
      if(book_category!=""){if(count_flag)sql_str+=" AND";sql_str+=" category='"+book_category+"' ";}
-         
-     //console.log(sql_str)
+
+     if(!count_flag){sql_str += " store='" + req.session.store + "'" ;}
+     console.log(sql_str)
      connection.query(sql_str, function(err, results) {
         if (err) {
             console.log(err);
         }
         if(results==""){
           console.log("Found Nothing");
-          res.redirect('/users/get_stock_search'); 
+
+	  res.render('sys/stock_page_search',{results:[]})
           return;
         }
          console.log(results)
@@ -106,18 +103,31 @@ router.post('/search_stock',function(req,res,next){
 });
 
 
+router.get('/get_stock_list',function(req,res,next){        
+	var sql_str ="select * from Book_Stock where store='" + req.session.store+"'";
+
+
+	connection.query(sql_str, function(err, results) {
+        if (err) {
+            console.log(err);
+        }
+        console.log("done")
+        res.render('sys/stock_page_search',{results:results})
+     });  
+
+});
+
+
+
 router.get('/get_stock',function(req,res,next){   
     res.render('sys/stock_page');
 
 });
 
+
+
 router.get('/get_stock_insert',function(req,res,next){    
     res.render('sys/stock_page_insert');
-
-});
-
-router.get('/get_stock_search',function(req,res,next){    
-    res.render('sys/stock_page_search',{results:[]});
 
 });
 

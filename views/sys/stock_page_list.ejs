@@ -8,9 +8,9 @@
 	<script src="/semUI_out/semantic.min.js"></script>
 
 	<script src="/javascripts/main_page.js"></script> 
-	
 </head>
 <body>
+
 
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
@@ -35,7 +35,7 @@
   </a>
 </div>
 		
-<div id="main">
+		<div id="main">
 			<ul>
 	        <form id="form" action="/users/search_stock" method="POST">				
 					Name：<br><input type="text" name="name"><br>
@@ -49,8 +49,7 @@
 
 		    </form>
 			</ul>
-      
-            
+
              <table class="data_table">
                     <tr>
                       <th>BookName</th>
@@ -62,7 +61,7 @@
                       <th>Category</th>
                     </tr>
             
-           <% for(var i in results){ %>
+           <% for(var i in results){ console.log("ha"+results[0].book)%>
 
                     <tr>
                       <td><%=results[i].name %></td>
@@ -80,7 +79,7 @@
 
 		</div>
 
- 
+
 
 
      
