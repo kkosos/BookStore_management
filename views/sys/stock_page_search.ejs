@@ -6,6 +6,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
 	<script src="/jquery/jquery.min.js"></script>
 	<script src="/semUI_out/semantic.min.js"></script>
+	<script src="/jquery/jquery.tablesorter.pager.js"></script>
 
 	<script src="/javascripts/main_page.js"></script> 
 	
@@ -36,32 +37,66 @@
 </div>
 		
 <div id="main">
-			<ul>
-	        <form id="form" action="/users/search_stock" method="POST">				
-					Name：<br><input type="text" name="name"><br>
-					Price：<br><input type="text" name="price"><br>
-					Date：<br><input type="text" name="date"><br>
-					Publishment：<br><input type="text" name="publishment"><br>
-                    Store：<br><input type="text" name="store"><br>
-					Amount：<br><input type="text" name="amount"><br>
-					Category：<br><input type="text" name="category"><br>
-				<input id="bt_log" type="submit" value="Send"> </input>
+			
+	        <form id="form" class="ui form" action="/users/search_stock" method="POST">
 
+			<div class="three fields">	
+				  <div class="field six wide">
+				    <label>Book_Name</label>
+				    <input name="name" placeholder="book_name" type="text">
+				  </div>
+				 <div class="field six wide">
+				    <label>Price</label>
+				    <input name="price" placeholder="price" type="text">
+				  </div>
+				 <div class="field six wide">
+				    <label>Date</label>
+				    <input name="date" placeholder="date" type="text">
+				  </div>
+			</div>
+			<div class="three fields">	
+				 <div class="field six wide">
+				    <label>Publishment</label>
+				    <input name="publishment" placeholder="publishment" type="text">
+				  </div>
+				 <div class="field six wide">
+				    <label>Store</label>
+				    <input name="store" placeholder="store" type="text">
+				  </div>
+				 <div class="field six wide">
+				    <label>Amount</label>
+				    <input name="amount" placeholder="amount" type="text">
+				  </div>
+			</div>
+			<div class="two fields">	
+			 <div class="field eight wide">
+			    <label>Category</label>
+			    <input name="category" placeholder="category" type="text">
+			  </div>
+			 <div class="field eight wide">
+			    <label>Language</label>
+			    <input name="language" placeholder="language" type="text">
+			  </div>			
+			</div>
+			<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Search</button>
 		    </form>
-			</ul>
+
       
             
-             <table class="data_table">
-                    <tr>
-                      <th>BookName</th>
-                      <th>Price</th>
-                      <th>Date</th>
-                      <th>Publishment</th>
-                      <th>Store</th>
-                      <th>Amount</th>
-                      <th>Category</th>
+             <table class="ui large center aligned celled table" id="main_table">
+                 <thead>
+		<tr>
+                      <th>BookName<i class="sort icon"></i></th>
+                      <th>Price<i class="sort icon"></i></th>
+                      <th>Date<i class="sort icon"></i></th>
+                      <th>Publishment<i class="sort icon"></i></th>
+                      <th>Store<i class="sort icon"></i></th>
+                      <th>Amount<i class="sort icon"></i></th>
+                      <th>Category<i class="sort icon"></i></th>
+                      <th>language<i class="sort icon"></i></th>
                     </tr>
-            
+            </thead>
+		<tbody>
            <% for(var i in results){ %>
 
                     <tr>
@@ -72,16 +107,27 @@
                       <td><%=results[i].store %></td>
                       <td><%=results[i].amount %></td>
                       <td><%=results[i].category %></td>
+		      <td><%=results[i].language %></td>
                      </tr>
               
               
               <% } %>
+		</tbody>
                 </table>
 
 		</div>
 
- 
+ 		<script>
+			
+			$(document).ready(function() 
+			    { 
+				$("#main_table").tablesorter(); 
+			    } 
+			); 
+    
 
+
+		</script>
 
      
 </body>
