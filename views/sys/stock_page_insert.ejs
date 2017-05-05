@@ -11,7 +11,6 @@
 </head>
 <body>
 
-
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
@@ -29,11 +28,17 @@
     <i class="block layout icon"></i>
     Stock
   </a>
-  <a class="item">
+  <a class="item" href="/trade/get_trade">
     <i class="smile icon"></i>
-    Clients
+    Trade
+  </a>
+   <a class="item">
+    <i class="smile icon"></i>
+    ADD
   </a>
 </div>
+
+
 <% console.log(input);console.log(error) %>		
 <div id="main">
 		 <form id="form" class="ui form" action="/users/input_stock" method="POST">
@@ -92,9 +97,13 @@
 				<div class="field one wide"></div>		
 			</div>
 			<div class="one fields">	
-			<div class="field one wide"></div>
-			<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Insert</button>
-		    	</div >	
+				<div class="field one wide"></div>
+				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Insert</button>
+			 </div >	
+			<div class="ui error message">
+			    <div class="header">Action Forbidden</div>
+			    <p>You can only sign up for an account once with a given e-mail address.</p>
+			  </div>
 		</form>
 </div>
 
@@ -118,8 +127,8 @@ $('.ui.form')
         identifier: 'price',
         rules: [
           {
-            type   : 'minCount[2]',
-            prompt : 'Please select at least two skills'
+            type   : 'regExp[[0-9]]',
+            prompt : 'Please enter number'
           }
         ]
       },
@@ -127,8 +136,8 @@ $('.ui.form')
         identifier: 'date',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please select a gender'
+            type   : 'regExp[[0-9]/[0-9]/[0-9]]',
+            prompt : 'Please enter 1990/01/01'
           }
         ]
       },
@@ -137,7 +146,7 @@ $('.ui.form')
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please enter a username'
+            prompt : 'Please enter a publishment'
           }
         ]
       },
@@ -146,11 +155,7 @@ $('.ui.form')
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please enter a password'
-          },
-          {
-            type   : 'minLength[6]',
-            prompt : 'Your password must be at least {ruleValue} characters'
+            prompt : 'Please enter a store'
           }
         ]
       },
@@ -158,8 +163,8 @@ $('.ui.form')
         identifier: 'amount',
         rules: [
           {
-            type   : 'checked',
-            prompt : 'You must agree to the terms and conditions'
+            type   : 'regExp[0-9]',
+            prompt : 'Please enter number'
           }
         ]
       },
@@ -167,8 +172,8 @@ $('.ui.form')
         identifier: 'category',
         rules: [
           {
-            type   : 'checked',
-            prompt : 'You must agree to the terms and conditions'
+              type   : 'empty',
+              prompt : 'Please enter a category'
           }
         ]
       },
@@ -176,15 +181,14 @@ $('.ui.form')
         identifier: 'language',
         rules: [
           {
-            type   : 'checked',
-            prompt : 'You must agree to the terms and conditions'
+               type   : 'empty',
+               prompt : 'Please enter a language'
           }
         ]
       }
     }
   })
 ;
-
 </script>
 
 </body>

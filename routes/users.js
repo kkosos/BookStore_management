@@ -68,7 +68,7 @@ router.post('/search_stock',function(req,res,next){
     res.redirect('/get_stock_insert')
     return
   }//*/
-
+	console.log(req.body)
   var count_flag=0;
   var book_name=req.body['name'],
       book_price=req.body['price'],
@@ -114,14 +114,15 @@ router.post('/search_stock',function(req,res,next){
 
 router.get('/get_stock_list',function(req,res,next){        
 	var sql_str ="select * from Book_Stock where store='" + req.session.store+"'";
-
-
+	//var sql_str ="select Storename from Book_Store ";
+	
+	//var sql_str ="select DISTINCT category from Book_Stock ";
+        //var sql_str ="select DISTINCT publishment from Book_Stock ";
 	connection.query(sql_str, function(err, results) {
         if (err) {
             console.log(err);
-        }
-        console.log("done")
-        res.render('sys/stock_page_search',{results:results})
+        }	
+		  res.render('sys/stock_page_search',{results:results})
      });  
 
 });

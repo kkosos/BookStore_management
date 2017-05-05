@@ -30,58 +30,90 @@
     <i class="block layout icon"></i>
     Stock
   </a>
-  <a class="item">
+  <a class="item" href="/trade/get_trade">
     <i class="smile icon"></i>
-    Clients
+    Trade
+  </a>
+   <a class="item">
+    <i class="smile icon"></i>
+    ADD
   </a>
 </div>
+
+
 		
 <div id="main">
-			
+		Input an information if needed	
 	        <form id="form" class="ui form" action="/users/search_stock" method="POST">
 
 			<div class="three fields">	
-				  <div class="field six wide">
+				<div class="field one wide"></div>
+				  <div class="field five wide">
 				    <label>Book_Name</label>
 				    <input name="name" placeholder="book_name" type="text">
 				  </div>
-				 <div class="field six wide">
+				 <div class="field five wide">
 				    <label>Price</label>
 				    <input name="price" placeholder="price" type="text">
 				  </div>
-				 <div class="field six wide">
+				 <div class="field five wide">
 				    <label>Date</label>
 				    <input name="date" placeholder="date" type="text">
 				  </div>
+				<div class="field one wide"></div>
 			</div>
 			<div class="three fields">	
-				 <div class="field six wide">
+				<div class="field one wide"></div>
+				 <div class="field five wide">
 				    <label>Publishment</label>
 				    <input name="publishment" placeholder="publishment" type="text">
 				  </div>
-				 <div class="field six wide">
-				    <label>Store</label>
-				    <input name="store" placeholder="store" type="text">
+				 <div class="field five wide">
+
+					<label>Store</label>
+					      <select class="ui fluid dropdown" name="store">
+						<option value="">Store</option>
+						    <option value="StoreA">StoreA</option>
+						    <option value="StoreB">StoreB</option>
+						    <option value="StoreC">StoreC</option>
+					     </select>
+					
+				  <!-- 
+				    <input name="store" placeholder="store" type="text"> -->
 				  </div>
-				 <div class="field six wide">
+				 <div class="field five wide">
 				    <label>Amount</label>
 				    <input name="amount" placeholder="amount" type="text">
 				  </div>
+				<div class="field one wide"></div>
 			</div>
 			<div class="two fields">	
-			 <div class="field eight wide">
+			<div class="field one wide"></div>
+			 <div class="field seven wide">
 			    <label>Category</label>
 			    <input name="category" placeholder="category" type="text">
 			  </div>
-			 <div class="field eight wide">
+			 <div class="field seven wide">
+				
 			    <label>Language</label>
-			    <input name="language" placeholder="language" type="text">
-			  </div>			
-			</div>
-			<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Search</button>
-		    </form>
+				 <select class="ui fluid dropdown" name="language">
+						<option value="">Language</option>
+						    <option value="English">English</option>
+						    <option value="Chinese">Chinese</option>
 
-      
+					     </select>
+			   <!-- <input name="language" placeholder="language" type="text">-->
+			  </div>
+			<div class="field one wide"></div>			
+			</div>
+			<div class="one fields">	
+				<div class="field one wide"></div>
+				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Search</button>
+			 </div >	
+ </form>
+<div class="ui grid">
+     <label></label> 
+</div>
             
              <table class="ui large center aligned celled table" id="main_table">
                  <thead>
