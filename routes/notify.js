@@ -1,24 +1,27 @@
 const fs = require('fs');
+const monitor = require('./monitor');
 
+module.exports = function(io){
 
-exports = module.exports = function(io){
-
+	
+	
 	io.on("connection",function(socket){
 	
 		console.log("systenon")
 		
-	function a(){
-		console.log("hahah")
+		function a(){
+			console.log("hahah")
 	
-	}
-    socket.on('test',function(msg){console.log(msg)});
+		}
+    	socket.on('test',function(msg){console.log(msg)});
 		socket.on('test2',function(msg){console.log(msg)});
+		monitor(socket);
 	});
 
-	return io;
-
-
 }
+
+
+
 
 /*
 

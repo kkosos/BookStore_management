@@ -3,6 +3,7 @@ var router = express.Router();
 
 var db = require('./db');
 var connection = db();
+var set_amount=50;
 /* GET users listing. */
 
 
@@ -16,9 +17,17 @@ router.get('/sell',function(req,res,next){
     res.redirect('/');
     return
     }
+	var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + set_amount + " AND store='" + req.session.store + "'";
+		 connection.query(sql_str, function(err, results) {
+			if (err) {
+				console.log(err);
+			}
+			console.log(results)
+			res.render('sys/trade_page_sell',{results:results});
+
+		 });
 	
 	
-	res.render('sys/trade_page_sell');
 }); 
 	
 	
@@ -92,8 +101,16 @@ router.post('/sellit',function(req,res,next){
 		
 		 // res.render('sys/trade_page_sell',{results:results})
 		
+		var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + set_amount + " AND store='" + req.session.store + "'";
+		 connection.query(sql_str, function(err, results) {
+			if (err) {
+				console.log(err);
+			}
+			console.log(results)
+			if(i==trade_time)res.render('sys/trade_page_sell',{results:results});
+
+		 });
 		
-		if(i==trade_time)res.render('sys/trade_page_sell');
      });  
 	
 	

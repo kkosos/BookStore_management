@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
-var socket_io = require('socket.io');
 
+var socket_io = require('socket.io');
 
 
 var index = require('./routes/index');
@@ -42,12 +42,17 @@ app.use(cookieSession({
 app.use('/', index);
 app.use('/users', users);
 app.use('/trade', trade);
-app.use('/monitor', monitor);
+//app.use('/monitor', monitor);
 //app.use('/notify', socket_io);
 
 var io = socket_io();
 app.io = io;
 var so = require('./routes/notify')(io);
+//app.use('/monitor',);
+
+//app.use('/monitor', monitor());
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

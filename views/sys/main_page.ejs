@@ -12,11 +12,15 @@
 </head>
 <body>
 
+
+	
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
     <div class="ui dropdown item">	
 		<i  id="alertit" class="alarm icon"></i>
+		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
+		
 		<div id="notifyit" class="massive menu">
 			
 		</div>
@@ -80,67 +84,11 @@
 
 </div>
 <script>
-/*
-$(document).keyup(function(e) {
-	if (e.keyCode == 27) {
+	var warn_list= <%- JSON.stringify(results) %>
 
-	$('.ui.labeled.icon.sidebar')
-  .sidebar('toggle')
-;
-  }
-});
-$(function() {
-  $('#side_bar_list').click(function() {
-    $('.ui.labeled.icon.sidebar').sidebar('toggle')
-  });  
-});
-
-
-$(function() {
-  $('.toggle-nav').click(function() {
-    if($('#mySidenav').width()==0){
-        $('#mySidenav').width(250);
-        $('#main').css('margin-left','250px');
-        $('#header').css('margin-left','250px');    
-    }
-    else {
-        $('#mySidenav').width(0);
-        $('#main').css('margin-left','0');
-        $('#header').css('margin-left','0');    
-    }    
-  });  
-});
-
-$(function() {
-  $('.toggle-nav').click(function() {
-    if($('#mySidenav').width()==0){
-        $('#mySidenav').width(250);
-        $('#main').css('margin-left','250px');
-        $('#header').css('margin-left','250px');    
-    }
-    else {
-        $('#mySidenav').width(0);
-        $('#main').css('margin-left','0');
-        $('#header').css('margin-left','0');    
-    }    
-  });  
-});
-
-*/
-/*
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    document.getElementById("header").style.marginLeft = "250px";
-}
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
-    document.getElementById("header").style.marginLeft = "0";
-}*/
 
 </script>
-     
+     <script src="/javascripts/warning_list.js"></script> 
 </body>
 </html> 
 

@@ -9,9 +9,12 @@
 	<script src="/javascripts/main_page.js"></script> 
 	<script src="/socket.io/socket.io.js"></script> 
 	<script src="/javascripts/notify.js"></script> 
+	
 </head>
 <body>
 
+
+	
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
@@ -84,18 +87,18 @@
 			  </div>
 		</form>
 		</div>
-			
 
  		<script>
-		
-			var warn_list= <%- JSON.stringify(results) %>
-
+			
+			$(document).ready(function() 
+			    { 
+				$("#main_table").tablesorter(); 
+			    } 
+			); 
+    
 
 
 		</script>
-		<script src="/javascripts/warning_list.js"></script> 
-
-	
      
 </body>
 </html> 

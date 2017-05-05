@@ -4,9 +4,18 @@ var router = express.Router();
 var db = require('./db');
 var connection = db();
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+
+function detect_stock(req, res){
+   var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + 50 + " AND store='" + req.session.store + "'";
+		 connection.query(sql_str, function(err, results) {
+			if (err) {
+				console.log(err);
+			}
+			console.log(results)
+			res.render('sys/stock_page',{results:results});
+
+		 });
+}
 
 
 
@@ -193,8 +202,7 @@ router.get('/get_stock_list',function(req,res,next){
 
 
 router.get('/get_stock',function(req,res,next){   
-    res.render('sys/stock_page');
-
+  detect_stock(req, res);
 });
 
 

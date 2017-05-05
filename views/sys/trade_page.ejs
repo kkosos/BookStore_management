@@ -7,6 +7,8 @@
 	<script src="/jquery/jquery.min.js"></script>
 	<script src="/semUI_out/semantic.min.js"></script>
 	<script src="/javascripts/main_page.js"></script> 
+	<script src="/javascripts/warning_list.js"></script> 
+
 	
 </head>
 <body>
@@ -16,6 +18,8 @@
   <div class="right menu">
     <div class="ui dropdown item">	
 		<i  id="alertit" class="alarm icon"></i>
+		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
+		
 		<div id="notifyit" class="massive menu">
 			
 		</div>
@@ -43,6 +47,7 @@
     ADD
   </a>
 </div>
+
 
 
 

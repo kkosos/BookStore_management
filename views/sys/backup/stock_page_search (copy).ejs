@@ -11,20 +11,14 @@
 	<script src="/javascripts/main_page.js"></script> 
 	<script src="/socket.io/socket.io.js"></script> 
 	<script src="/javascripts/notify.js"></script> 
-	<script src="/javascripts/warning_list.js"></script> 
-
 	
 </head>
 <body>
-	
-	
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
     <div class="ui dropdown item">	
 		<i  id="alertit" class="alarm icon"></i>
-		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
-		
 		<div id="notifyit" class="massive menu">
 			
 		</div>
@@ -55,7 +49,8 @@
 
 
 		
-<div id="main" >
+<div id="main">
+		Input an information if needed	
 	        <form id="form" class="ui form" action="/users/search_stock" method="POST">
 
 			<div class="three fields">	
@@ -130,31 +125,9 @@
 				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Search</button>
 			 </div >	
  </form>
-	
-	<br>
-	
-		<div class="ui grid">
-			<div class="two wide column"></div>
-			<div class="two wide column">
-				<div class="ui slider checkbox">
-					<input type="checkbox" name = "toggleit" id="togg">
-					<label>Warning</label>
-				</div>
-			</div>
-			<div class="six wide column"></div>
-			<div class="six wide column">
-					<div class = "ui search">
-						<div class = "ui icon labeled input">
-							<div class="ui label">
-								Filter
-							</div>
-							<input id="search" class = "prompt" type="text" placeholder="filter">
-							<i class="search icon"></i>
-						</div>
-					</div>
-			</div>
-			<div class="two wide column"></div>
-		</div>
+<div class="ui grid">
+     <label></label> 
+</div>
             
              <table class="ui large center aligned celled table" id="main_table">
                  <thead>
@@ -169,8 +142,8 @@
                       <th>language<i class="sort icon"></i></th>
                     </tr>
             </thead>
-		<tbody id ="tablebody">
-          <!-- <% for(var i in results){  %>
+		<tbody>
+           <% for(var i in results){ %>
 
                     <tr>
                       <td><%=results[i].name %></td>
@@ -184,140 +157,16 @@
                      </tr>
               
               
-              <% } %>-->
+              <% } %>
 		</tbody>
                 </table>
 
-</div>
+		</div>
 
  		<script>
 			
-			
-			
-	
-		var obj= <%- JSON.stringify(results) %>
-		var warn=[];
-		$('#search').on('input',reload);
-		$('#togg').on('input',toggle_warn);
-		
-					  
-		function toggle_warn(){
-			var flag_toggle = document.getElementById('togg').checked
-
-			var tb = document.getElementById("tablebody");
-			tb.innerHTML='';
-			
-			if(flag_toggle){
-				for(var i in warn){
-						
-					var tr = document.createElement("tr");
-					for(var j in obj[warn[i]]){
-						var td = document.createElement("td");
-						td.innerHTML = obj[warn[i]][j];
-					    tr.appendChild(td);
-					}
-					tb.appendChild(tr);		
-				
-				}
-			}
-				
-			else{
-				reload()
-			}
-			$("#main_table").trigger("update"); 
-		}
-	
-		function _warn(){
-			var cur_val = $('#search').val();
-			for(var i in obj){				
-				if(obj[i].amount<50)warn.push(i);		
-			}
-			
-			if(warn.length)document.getElementById("warning_icon").style.display="block";
-
-		}
-				
-		
-			
-			
-		function reload(){
-			var cur_val = $('#search').val();
-			var tb = document.getElementById("tablebody");
-			tb.innerHTML='';
-			var flag_toggle = document.getElementById('togg').checked
-
-			if(!flag_toggle)
-			{
-					for(var i in obj){
-
-
-						var tr = document.createElement("tr");
-						var flag = false;
-
-						for(var j in obj[i]){
-							//obj[i][j]	
-								if(obj[i][j].toString().match(cur_val)!=null){
-									flag=true;
-								}
-								var td = document.createElement("td");
-								td.innerHTML = obj[i][j];
-								tr.appendChild(td);
-
-						}
-
-						if(flag)
-							tb.appendChild(tr);	
-					}
-			}
-			else{
-				for(var i in warn){
-						
-					var flag = false;
-					var tr = document.createElement("tr");
-					for(var j in obj[warn[i]]){
-						
-						if(obj[warn[i]][j].toString().match(cur_val)!=null){
-									flag=true;
-						}						
-						var td = document.createElement("td");
-						console.log(flag+"  "+warn[i])
-						td.innerHTML = obj[warn[i]][j];
-					    tr.appendChild(td);
-					}
-					if(flag)
-					tb.appendChild(tr);		
-				
-				}
-			}
-			
-			
-			$("#main_table").trigger("update"); 
-		};
-	
-			
-			function getit(){
-				var query = window.location.search.substr(1).split("=")[1];
-				if(query=="true")
-					document.getElementById('togg').checked=true;
-			
-			}
-			
-		/*	
-			$(function() {
-				
-			$('#search').change(function(){console.log("hhh")})
-			});
-			*/
-			
-			//var obj= <%- JSON.stringify(results) %>
-			//console.log(obj)
 			$(document).ready(function() 
 			    { 
-				getit();
-				_warn();
-				reload();
-				
-			
 				$("#main_table").tablesorter(); 
 			    } 
 			); 

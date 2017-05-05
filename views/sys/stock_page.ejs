@@ -11,11 +11,14 @@
 </head>
 <body>
 
+	
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
     <div class="ui dropdown item">	
 		<i  id="alertit" class="alarm icon"></i>
+		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
+		
 		<div id="notifyit" class="massive menu">
 			
 		</div>
@@ -44,7 +47,6 @@
   </a>
 </div>
 
-
 <div id="main" class="ui grid" >
 		
 		<div class="ui four wide column"></div>
@@ -57,54 +59,12 @@
 		<div class="ui four wide column"></div>
 		
 </div>
+	
+<script>
+	var warn_list= <%- JSON.stringify(results) %>
 
-
-<!--
-
-
-
-
-<div id="mySidenav" class="sidenav">
-  <ul>
-      
-      <li><a href="javascript:void(0)" class="closebtn toggle-nav" >&times;</a>
-      
-      </li>
-      <li><span class="Brand_Name">Name</span>
-      </li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Stock</a></li>
-      <li><a href="#">Clients</a></li>
-      <li><a href="#">Contact</a></li>
-      <li><a href="#">Cossct</a></li>
-      <li><a href="/logout">Logout</a></li>
-</div>
-
-	<div class="main_wrapper">
-
-	<div id="header" class="_header">
-		  <ul>
-			<li><span style="font-size:30px;cursor:pointer" class="toggle-nav">&#9776;</span>
-			</li>
-			<li><a>Alert</a></li>
-			<li><a>Robin Brons</a></li>
-		  </ul>
-
-	</div>
-		
-		
-		<div id="main">
-			<ul>
-			        <li><a href="/users/get_stock_insert">Insert</a></li>
-      			        <li><a href="/users/get_stock_list">Search</a></li>
-				
-			</ul>
-		</div>
-
-
-
-</div>
--->
+</script>
+     <script src="/javascripts/warning_list.js"></script> 
      
 </body>
 </html> 

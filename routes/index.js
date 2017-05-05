@@ -5,16 +5,36 @@ var router = express.Router();
 var db = require('./db');
 var connection = db();
 
+function detect_stock(req, res){
+   var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + 50 + " AND store='" + req.session.store + "'";
+		 connection.query(sql_str, function(err, results) {
+			if (err) {
+				console.log(err);
+			}
+			console.log(results)
+			res.render('sys/main_page',{results:results});
+
+		 });
+}
+
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.session.logined){res.render('sys/main_page');return;}
+  if(req.session.logined){    
+   
+    detect_stock(req, res);
+    
+    
+    ;return;}
    res.locals.error="";
   res.render('index');
 });
 
 router.get('/main', function(req, res, next) {
   if(!req.session.logined){res.redirect('/');return;}
-  res.render('sys/main_page', { title: 'Express' });
+  detect_stock(req, res)
+  //res.render('sys/main_page', { title: 'Express' });
 });
 
 router.post('/reg', function(req, res, next) {
@@ -108,7 +128,8 @@ router.post('/login', function(req, res, next) {
               //res.redirect('/');
                console.log("done")
                //res.redirect('/');
-               res.render('sys/main_page', { title: 'Express' });
+               detect_stock(req, res);
+              // res.render('sys/main_page', { title: 'Express' });
             }
         }
         // use index.ejs
