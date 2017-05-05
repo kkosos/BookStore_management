@@ -13,31 +13,90 @@ router.get('/', function(req, res, next) {
 router.post('/input_stock',function(req,res,next){
   res.locals.error="";
   res.locals.input=[];
-  if(req.body.name==""||req.body.price==""||req.body.date==""||req.body.publishment==""||req.body.store==""||req.body.amount==""||req.body.category==""||req.body.language==""){  
-    res.locals.error="Field can't be empty"
-    res.locals.input = req.body;
+  if(req.body.name==""){  
+     res.locals.error="Name Field can't be empty"
+     res.locals.input = req.body;
      res.render('sys/stock_page_insert');
     return
   }
+  
+  
+  
+  //quick for update amount
+  if(req.body.price==""||req.body.date==""||req.body.publishment==""||req.body.store==""||req.body.amount==""||req.body.category==""||req.body.language=="")
+  {
+     var sql_str = "SELECT * FROM Book_Stock WHERE  name='"+req.body.name+"'AND store='" + req.session.store+"'";
+     //detcet if a book exist
+     connection.query(sql_str,book_name, function(err, results) {
+        if (err) {
+            console.log(err);
+        }
+        if(results==""){
+         res.locals.error="Can't find book"
+         res.locals.input = req.body;
+         res.render('sys/stock_page_insert');
+         return
+        }
+        else{//find the book then update amount
+          
+          var results_tmp = results[0];
+          results_tmp.amount += parseInt(req.body.amount);
+          var sql_update = "UPDATE Book_Stock SET amount='"+ results_tmp.amount+"' WHERE name='"+results_tmp.name+"'  AND store='"+results_tmp.store + "'"  ;
+        				
+        
+        connection.query(sql_update, function(err, results) {
+					if(err)
+						console.log(err)
+
+          
+          res.render('sys/stock_page_insert');
+          return;
+        
+				});
+          
+          
+          
+        }
+       
+       
+     });
+    
+    
+  }
+  
+  else{
+  //normal insert 
+          
   var book_name=req.body['name'],
       book_price=req.body['price'],
       book_date=req.body['date'],      
       book_publishment=req.body['publishment'],
       book_store=req.body['store'],
       book_amount=req.body['amount'],
-      book_category=req.body['category'];  
+      book_category=req.body['category'],  
       book_language=req.body['language'];        
  
-     var sql_str = "SELECT * FROM Book_Stock WHERE  name=?"
+     var sql_str = "SELECT * FROM Book_Stock WHERE  name='"+book_name+"' store='" + book_store+"'";
      connection.query(sql_str,book_name, function(err, results) {
         if (err) {
             console.log(err);
         }
         if(results!=""){
           console.log("Already exist");
-	  res.locals.error="Already exist";
-           res.render('sys/stock_page_insert');
-          return;
+          tmp = results.amount + book_amount;
+          sql_str = "UPDATE Book_Stock SET amount='" + tmp + "'";
+          
+                connection.query(sql_str, function(err, rows) {
+                          if (err) {
+                              console.log(err);
+
+
+                          }
+                           res.redirect('/users/get_stock_insert'); 
+                           return;
+
+                      });        
+          
         }
          else{
                 var sql_str = "INSERT INTO Book_Stock (name,price,date,publishment,store,amount,category)\
@@ -58,6 +117,10 @@ router.post('/input_stock',function(req,res,next){
      
      });  
 
+  
+  
+  }
+  
 });
 
 
@@ -76,7 +139,7 @@ router.post('/search_stock',function(req,res,next){
       book_publishment=req.body['publishment'],
       book_store=req.body['store'],
       book_amount=req.body['amount'],
-      book_category=req.body['category'];      
+      book_category=req.body['category'],      
       book_language=req.body['language'];    
  
   
@@ -142,7 +205,5 @@ router.get('/get_stock_insert',function(req,res,next){
     res.render('sys/stock_page_insert');
 
 });
-
-
 
 module.exports = router;

@@ -12,3 +12,15 @@ $(function() {
   });  
 });
 
+
+$(function() {
+	$('#alertit').click(function(){
+		$('.ui.dropdown').dropdown();
+		console.log("affa")
+		
+		var child = document.createElement("div");
+		child.className='item';
+		child.innerHTML = "newsgsdgds";
+		document.getElementById("notifyit").appendChild(child);
+	});
+});

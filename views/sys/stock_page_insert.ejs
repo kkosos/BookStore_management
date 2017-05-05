@@ -10,11 +10,16 @@
 	
 </head>
 <body>
-
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
-    <a class="item"><i class="user icon"></i>User</a>
+    <div class="ui dropdown item">	
+		<i  id="alertit" class="alarm icon"></i>
+		<div id="notifyit" class="massive menu">
+			
+		</div>
+	</div>
+	<a class="item"><i class="user icon"></i>User</a>
     <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
   </div>
 </div>
@@ -64,16 +69,33 @@
 			<div class="three fields">	
 				<div class="field one wide"></div>
 				 <div class="field five wide">
-				    <label>Publishment</label>
-				    <input name="publishment" placeholder="publishment" type="text"
-					<% if(input!=[] &&input.publishment!="") { %>  value= "<%=input.publishment %>" <% } %>	>
+					 <label>Publishment</label>
+					 <select class="ui fluid dropdown" name="store">
+					
+						<option value="">Pulisher</option>
+						    <option value="Spring">Spring</option>
+						    <option value="Summer">Summer</option>
+						    <option value="Fall">Fall</option>
+						    <option value="Winter">Winter</option>
+					    </select>
+				   
+				  <!--  <input name="publishment" placeholder="publishment" type="text"
+					<% if(input!=[] &&input.publishment!="") { %>  value= "<%=input.publishment %>" <% } %>	> -->
 			
 				  </div>
 				 <div class="field five wide">
-				    <label>Store</label>
+					 
+					 <label>Store</label>
+					      <select class="ui fluid dropdown" name="store">
+						<option value="">Store</option>
+						    <option value="StoreA">StoreA</option>
+						    <option value="StoreB">StoreB</option>
+						    <option value="StoreC">StoreC</option>
+					     </select>
+				   <!--
 				    <input name="store" placeholder="store" type="text"
 					<% if(input!=[] &&input.store!="") { %>  value= "<%=input.store %>" <% } %>	>
-			
+						-->
 				  </div>
 				 <div class="field five wide">
 				    <label>Amount</label>
@@ -91,8 +113,14 @@
 				  </div>
 				 <div class="field seven wide">
 				    <label>Language</label>
-				    <input name="language" placeholder="language" type="text"
-					<% if(input!=[] &&input.language!="") { %>  value= "<%=input.language %>" <% } %>>
+					  <select class="ui fluid dropdown" name="language">
+						<option value="">Language</option>
+						    <option value="English">English</option>
+						    <option value="Chinese">Chinese</option>
+
+					     </select>
+				  <!--  <input name="language" placeholder="language" type="text"
+					<% if(input!=[] &&input.language!="") { %>  value= "<%=input.language %>" <% } %>> -->
 				  </div>	
 				<div class="field one wide"></div>		
 			</div>
@@ -122,7 +150,7 @@ $('.ui.form')
             prompt : 'Please enter your name'
           }
         ]
-      },
+      },/*
       price: {
         identifier: 'price',
         rules: [
@@ -131,7 +159,7 @@ $('.ui.form')
             prompt : 'Please enter number'
           }
         ]
-      },
+      },*//*
       date: {
         identifier: 'date',
         rules: [
@@ -140,7 +168,7 @@ $('.ui.form')
             prompt : 'Please enter 1990/01/01'
           }
         ]
-      },
+      },*//*
       publishment: {
         identifier: 'publishment',
         rules: [
@@ -149,7 +177,7 @@ $('.ui.form')
             prompt : 'Please enter a publishment'
           }
         ]
-      },
+      },*/
       store: {
         identifier: 'store',
         rules: [
@@ -163,11 +191,11 @@ $('.ui.form')
         identifier: 'amount',
         rules: [
           {
-            type   : 'regExp[0-9]',
+            type   : 'regExp[[0-9]]',
             prompt : 'Please enter number'
           }
         ]
-      },
+      },/*
       category: {
         identifier: 'category',
         rules: [
@@ -176,7 +204,7 @@ $('.ui.form')
               prompt : 'Please enter a category'
           }
         ]
-      },
+      },*/
       language: {
         identifier: 'language',
         rules: [

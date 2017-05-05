@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="/semUI_out/semantic.min.css">
+	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
+	<script src="/jquery/jquery.min.js"></script>
+	<script src="/semUI_out/semantic.min.js"></script>
+	<script src="/javascripts/main_page.js"></script> 
+	
+</head>
+<body>
+
+<div class="ui fixed menu">
+  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
+  <div class="right menu">
+    <div class="ui dropdown item">	
+		<i  id="alertit" class="alarm icon"></i>
+		<div id="notifyit" class="massive menu">
+			
+		</div>
+	</div>
+	<a class="item"><i class="user icon"></i>User</a>
+    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
+  </div>
+</div>
+
+<div class="ui left demo vertical inverted sidebar labeled icon menu">
+  <a class="item" href="/">
+    <i class="home icon"></i>
+    About
+  </a>
+  <a class="item" href="/users/get_stock">
+    <i class="block layout icon"></i>
+    Stock
+  </a>
+  <a class="item" href="/trade/get_trade">
+    <i class="smile icon"></i>
+    Trade
+  </a>
+   <a class="item">
+    <i class="smile icon"></i>
+    ADD
+  </a>
+</div>
+
+
+<div id="main" style="margin-top:50px;">
+		 <form id="form" class="ui form" action="/trade/sellit" method="POST">
+			<div class="four fields">	
+					<div class="field one wide"></div>
+				  <div class="field five wide">
+				    <label>Book_Name</label>
+				    <input name="name" placeholder="book_name" type="text"  
+                                         >
+				  </div>
+				 <div class="field five wide">
+				    <label>Publishment</label>
+				    <input name="publishment" placeholder="Publishment" type="text"
+					>
+				  </div>
+				 <div class="field five wide">
+				    <label>Store</label>
+				    <input name="store" placeholder="store" type="text"
+					 >
+				  </div>
+				<div class="field five wide">
+				    <label>time</label>
+				    <input name="time" placeholder="time" type="text"
+					 >
+				  </div>
+				<div class="field one wide"></div>
+			</div>
+	         <div class="one fields">	
+				<div class="field one wide"></div>
+				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Insert</button>
+			 </div >	
+			<div class="ui error message">
+			    <div class="header">Action Forbidden</div>
+			    <p>You can only sign up for an account once with a given e-mail address.</p>
+			  </div>
+		</form>
+		</div>
+
+ 		<script>
+			
+			$(document).ready(function() 
+			    { 
+				$("#main_table").tablesorter(); 
+			    } 
+			); 
+    
+
+
+		</script>
+     
+</body>
+</html> 
+

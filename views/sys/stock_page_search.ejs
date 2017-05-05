@@ -12,11 +12,16 @@
 	
 </head>
 <body>
-
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
   <div class="right menu">
-    <a class="item"><i class="user icon"></i>User</a>
+    <div class="ui dropdown item">	
+		<i  id="alertit" class="alarm icon"></i>
+		<div id="notifyit" class="massive menu">
+			
+		</div>
+	</div>
+	<a class="item"><i class="user icon"></i>User</a>
     <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
   </div>
 </div>
@@ -66,13 +71,20 @@
 				<div class="field one wide"></div>
 				 <div class="field five wide">
 				    <label>Publishment</label>
-				    <input name="publishment" placeholder="publishment" type="text">
+					  <select class="ui fluid dropdown" name="publishment">
+						<option value="">Pulisher</option>
+						    <option value="Spring">Spring</option>
+						    <option value="Summer">Summer</option>
+						    <option value="Fall">Fall</option>
+						    <option value="Winter">Winter</option>
+					    </select>
+				   <!-- <input name="publishment" placeholder="publishment" type="text"> -->
 				  </div>
 				 <div class="field five wide">
 
 					<label>Store</label>
 					      <select class="ui fluid dropdown" name="store">
-						<option value="">Store</option>
+							<option value="">Store</option>
 						    <option value="StoreA">StoreA</option>
 						    <option value="StoreB">StoreB</option>
 						    <option value="StoreC">StoreC</option>
