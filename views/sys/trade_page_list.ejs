@@ -6,10 +6,12 @@
 	<link rel = "stylesheet" type = "text/css" href = "/stylesheets/index.css"/> 
 	<script src="/jquery/jquery.min.js"></script>
 	<script src="/semUI_out/semantic.min.js"></script>
-	<script src="/javascripts/main_page.js"></script> 
+	<script src="/jquery/jquery.tablesorter.pager.js"></script>
 	<script src="/socket.io/socket.io.js"></script> 
-	<script src="/javascripts/notify.js"></script> 
 	
+	<script src="/javascripts/main_page.js"></script> 
+	<script src="/javascripts/notify.js"></script> 
+	<script type="text/javascript" src="/javascripts/loader.js"></script>
 </head>
 <body>
 
@@ -19,18 +21,63 @@
 
 <div id="main" style="margin-top:50px;">
 	<div class="ui grid">
-			<div class="ui four wide column"></div>
+		<div class="row">
+			<div class="ui six wide column"></div>
 			<div class="ui four wide column">
-					<div class="ui buttons">
-						<button class="ui button "><i class="external share icon huge"></i></button>
-						<button class="ui button "><i class="list icon huge"></i></button>
-						<button class="ui button "><i class="list icon huge"></i></button>
+					<div class="green ui icon buttons">
+						<button class="ui button " id="list"><i class="list icon huge"></i></button>
+						<button class="ui button " id="bar"><i class="bar chart icon huge"></i></button>
+						<button class="ui button " id="line"><i class="line chart icon huge"></i></button>
 
 					</div>
 
+			</div>
+			<div class="ui one wide column"></div>
+			<div class="ui three wide column">
+				<div class="ui search">
+					<div class="ui icon input">
+					<input class="prompt" type="text" placeholder="Filter">
+						<i class = "search icon"></i>
+					</div>
 				</div>
-			<div class="ui four wide column"></div>
-			<div class="ui four wide column"></div>
+			</div>
+		</div>
+		<!--  table chart  -->
+		<div class="row">
+				<div class="three wide column"></div>
+				<div class="ten wide column" id="main_contaniner">
+					<table class="ui celled striped table" id="main_table">
+							<thead>
+								<tr>
+									<th colspan="3">
+									Transaction list
+									</th>
+								</tr>
+								<tr>
+									<th>Transaction_id<i class="sort icon"></i></th>
+									<th>name<i class="sort icon"></i></th>
+									<th>date<i class="sort icon"></i></th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<% for(var i in trade_result){ %>
+								<tr>
+									<td><%= trade_result[i].trade_id %></td>
+									<td><%= trade_result[i].name %></td>
+									<td><%= trade_result[i].date %></td>
+								</tr>
+								<% } %>
+								
+							</tbody>
+						</table>
+						<div>		
+								<div id="chart_div" style="display:none"></div>
+								<div id="chart_div2" style="display:none"></div>
+						</div>
+				</div>
+				<div class="three wide column"></div>	
+		</div>		
 	</div>
 	
 	
@@ -38,16 +85,113 @@
 </div>
 
  		<script>
+			var warn_list=[];
+				warn_list= <%- JSON.stringify(results) %> ;
 			
+			function tet(hh){
+				console.log("sds")
+			}	
+			$('#list').on('click',table_chart)
+			$('#bar').on('click',bar_chart)
+			$('#line').on('click',line_chart)
+			//$('#list').click(tet("tt"))
+			//$('#bar').click(tet("tts"))
+			//$('#line').click(tet("ttd"))
+				
+				
+				
 			$(document).ready(function() 
 			    { 
 				$("#main_table").tablesorter(); 
 			    } 
 			); 
-    
+			function table_chart(){
+				document.getElementById("main_table").style.display="";
+				document.getElementById("chart_div").style.display="none";
+				$("#main_table").trigger("update"); 
+			
+			}
+			
+			
+    		function bar_chart(){
+			document.getElementById("main_table").style.display="none";
+			document.getElementById("chart_div").style.display="";
+			
+			google.charts.load('current', {packages: ['corechart', 'bar']});
+			google.charts.setOnLoadCallback(drawBarColors);
+			function drawBarColors() {
+				  var data = google.visualization.arrayToDataTable([
+					['Book', '2017 sales', ],
+					['book1', 300, ],
+					['book2', 250, ],
+					['book3', 10, ],
+					['book9', 260, ],
+					['book87', 20, ]
+				  ]);
 
+				  var options = {
+					title: 'Each book sales in store',
+					chartArea: {width: '50%'},
+					colors: ['#33FFAA',],
+					hAxis: {
+					  title: 'Sales report',
+					  minValue: 0
+					},
+					vAxis: {
+					  title: 'Book'
+					}
+				  };
+				  var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+				  chart.draw(data, options);
+			
+			}
+			
+			}
+			
+			
+			function line_chart(){
+					google.charts.load('current', {packages: ['corechart', 'line']});
+					google.charts.setOnLoadCallback(drawBackgroundColor);
 
-		</script>
+					function drawBackgroundColor() {
+						  var data = new google.visualization.DataTable();
+						  data.addColumn('number', 'X');
+						  data.addColumn('number', 'Book');
+
+						  data.addRows([
+							[0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+							[6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+							[12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
+							[18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
+							[24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
+							[30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
+							[36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
+							[42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
+							[48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
+							[54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
+							[60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
+							[66, 70], [67, 72], [68, 75], [69, 80]
+						  ]);
+
+						  var options = {
+							hAxis: {
+							  title: 'Time'
+							},
+							vAxis: {
+							  title: 'Sale amount'
+							},
+							backgroundColor: '#f1f8e9'
+						  };
+
+						  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+						  chart.draw(data, options);
+						}
+				
+			
+			}
+
+	</script>
+     <script src="/javascripts/warning_list.js"></script> 
      
 </body>
 </html> 

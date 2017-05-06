@@ -7,12 +7,12 @@
 	<script src="/jquery/jquery.min.js"></script>
 	<script src="/semUI_out/semantic.min.js"></script>
 	<script src="/jquery/jquery.tablesorter.pager.js"></script>
-
-	<script src="/javascripts/main_page.js"></script> 
 	<script src="/socket.io/socket.io.js"></script> 
+	
+	<script src="/javascripts/main_page.js"></script> 
 	<script src="/javascripts/notify.js"></script> 
 	<script src="/javascripts/warning_list.js"></script> 
-
+	<script src="/javascripts/search_list.js"></script> 
 	
 </head>
 <body>
@@ -167,117 +167,7 @@
 		$('#search').on('input',reload);
 		$('#togg').on('input',toggle_warn);
 		
-					  
-		function toggle_warn(){
-			var flag_toggle = document.getElementById('togg').checked
 
-			var tb = document.getElementById("tablebody");
-			tb.innerHTML='';
-			
-			if(flag_toggle){
-				for(var i in warn){
-						
-					var tr = document.createElement("tr");
-					for(var j in obj[warn[i]]){
-						var td = document.createElement("td");
-						td.innerHTML = obj[warn[i]][j];
-					    tr.appendChild(td);
-					}
-					tb.appendChild(tr);		
-				
-				}
-			}
-				
-			else{
-				reload()
-			}
-			$("#main_table").trigger("update"); 
-		}
-	
-		function _warn(){
-			var cur_val = $('#search').val();
-			for(var i in obj){				
-				if(obj[i].amount<50)warn.push(i);		
-			}
-			
-			if(warn.length)document.getElementById("warning_icon").style.display="block";
-
-		}
-				
-		
-			
-			
-		function reload(){
-			var cur_val = $('#search').val();
-			var tb = document.getElementById("tablebody");
-			tb.innerHTML='';
-			var flag_toggle = document.getElementById('togg').checked
-
-			if(!flag_toggle)
-			{
-					for(var i in obj){
-
-
-						var tr = document.createElement("tr");
-						var flag = false;
-
-						for(var j in obj[i]){
-							//obj[i][j]	
-								if(obj[i][j].toString().match(cur_val)!=null){
-									flag=true;
-								}
-								var td = document.createElement("td");
-								td.innerHTML = obj[i][j];
-								tr.appendChild(td);
-
-						}
-
-						if(flag)
-							tb.appendChild(tr);	
-					}
-			}
-			else{
-				for(var i in warn){
-						
-					var flag = false;
-					var tr = document.createElement("tr");
-					for(var j in obj[warn[i]]){
-						
-						if(obj[warn[i]][j].toString().match(cur_val)!=null){
-									flag=true;
-						}						
-						var td = document.createElement("td");
-						console.log(flag+"  "+warn[i])
-						td.innerHTML = obj[warn[i]][j];
-					    tr.appendChild(td);
-					}
-					if(flag)
-					tb.appendChild(tr);		
-				
-				}
-			}
-			
-			
-			$("#main_table").trigger("update"); 
-		};
-	
-			
-			function getit(){
-				var query = window.location.search.substr(1).split("=")[1];
-				if(query=="true")
-					document.getElementById('togg').checked=true;
-			
-			}
-			
-		/*	
-			$(function() {
-				
-			$('#search').change(function(){console.log("hhh")})
-			});
-			*/
-			
-			//var obj= <%- JSON.stringify(results) %>
-			//console.log(obj)
 			$(document).ready(function() 
 			    { 
 				getit();
