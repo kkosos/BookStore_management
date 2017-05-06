@@ -6,8 +6,9 @@ function toggle_warn(){
 			
 			if(flag_toggle){
 				for(var i in warn){
-						
+					
 					var tr = document.createElement("tr");
+					tr.className="negative";
 					for(var j in obj[warn[i]]){
 						var td = document.createElement("td");
 						td.innerHTML = obj[warn[i]][j];
@@ -46,10 +47,11 @@ function reload(){
 	if(!flag_toggle)
 	{
 			for(var i in obj){
-
+				
 
 				var tr = document.createElement("tr");
 				var flag = false;
+				if(obj[i].amount<50)tr.className="negative";
 
 				for(var j in obj[i]){
 					//obj[i][j]	
@@ -71,6 +73,7 @@ function reload(){
 
 			var flag = false;
 			var tr = document.createElement("tr");
+			tr.className="negative";
 			for(var j in obj[warn[i]]){
 
 				if(obj[warn[i]][j].toString().match(cur_val)!=null){

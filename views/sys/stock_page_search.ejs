@@ -23,6 +23,13 @@
 
 		
 <div id="main" >
+	<div class="ui grid">
+		<div class="row">
+			<div class="two wide column"></div>
+			<button class="ui right labeled icon button" id="Filter"><i class="right arrow icon"></i>Detail search</button>
+		</div>
+		<div class="row " id="detail_search" style="display:none">
+			<div class="two wide column"></div>
 	        <form id="form" class="ui form" action="/users/search_stock" method="POST">
 
 			<div class="three fields">	
@@ -97,7 +104,8 @@
 				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Search</button>
 			 </div >	
  </form>
-	
+		</div>
+	</div>
 	<br>
 	
 		<div class="ui grid">
@@ -126,14 +134,19 @@
              <table class="ui large center aligned celled table" id="main_table">
                  <thead>
 		<tr>
+					  <th>Book_id<i class="sort icon"></i></th>
                       <th>BookName<i class="sort icon"></i></th>
                       <th>Price<i class="sort icon"></i></th>
-                      <th>Date<i class="sort icon"></i></th>
-                      <th>Publishment<i class="sort icon"></i></th>
+					  <th>Category<i class="sort icon"></i></th>
+                     
+					  
+					  <th>Amount<i class="sort icon"></i></th>
+                      
                       <th>Store<i class="sort icon"></i></th>
-                      <th>Amount<i class="sort icon"></i></th>
-                      <th>Category<i class="sort icon"></i></th>
+                      
+                      <th>Publishment<i class="sort icon"></i></th>
                       <th>language<i class="sort icon"></i></th>
+			    	  <th>Position<i class="sort icon"></i></th>
                     </tr>
             </thead>
 		<tbody id ="tablebody">
@@ -161,7 +174,13 @@
 			
 			
 			
-	
+	   $('#Filter').on('click',function(){	
+		   var tmp = document.getElementById("detail_search");		   
+		   if(tmp.style.display!="")tmp.style.display="";		   
+		   else tmp.style.display="none";   
+	   
+	   });
+	   
 		var obj= <%- JSON.stringify(results) %>
 		var warn=[];
 		$('#search').on('input',reload);

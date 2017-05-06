@@ -1,16 +1,18 @@
 	
 <div class="ui fixed menu">
   <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
-  <a class="item" id="side_bar_list"><i class="certificate icon" ></i>Favoite One</a>  
-  <a class="item" id="side_bar_list"><i class="certificate icon" ></i>Favoite Two</a>  
+  <a class="item" href="/trade/sell"><i class="certificate icon" ></i>Favoite Sell</a>  
+  <a class="item" href="/users/get_stock_list"><i class="certificate icon" ></i>Favoite Search</a>  
   <div class="right menu">
+        <div class="ui dropdown item">	
+		<i  id="msg" class="talk icon"></i>
+		<div id="msgit" class="massive menu">
+		</div>
+	</div>
     <div class="ui dropdown item">	
 		<i  id="alertit" class="alarm icon"></i>
 		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
-		
-		<div id="notifyit" class="massive menu">
-			
-		</div>
+
 	</div>
 	<a class="item"><i class="user icon"></i><%= data %> </a>
     <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
@@ -27,11 +29,11 @@
     Stock
   </a>
   <a class="item" href="/trade/get_trade">
-    <i class="smile icon"></i>
+    <i class="money icon"></i>
     Trade
   </a>
    <a class="item">
     <i class="smile icon"></i>
-    ADD
+    Message
   </a>
 </div>

@@ -96,7 +96,12 @@ router.post('/sellit',function(req,res,next){
         }	
 		console.log(results)
 		var results_tmp = results[0];
-		console.log("GG2")
+		
+		if(!results){
+			console.log("Trade error :not exist")
+			res.render('sys/trade_page_sell',{results:results,id:req.session.username});
+			return;
+		}
 		var i=0;
 		for(i=0;i<trade_time;i++)
 			if(results_tmp.amount>0)

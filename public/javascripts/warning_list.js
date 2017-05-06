@@ -6,13 +6,13 @@ if(warn_list.length){
 
 
 $(function() {
-	$('#alertit').click(function(){
+	$('#msg').click(function(){
 		$('.ui.dropdown').dropdown();
 		//console.log("affa")
 
 		var child = document.createElement("div");
 		child.className='item';
 		child.innerHTML = "test msg";
-		document.getElementById("notifyit").appendChild(child);
+		document.getElementById("msgit").appendChild(child);
 	});
 });

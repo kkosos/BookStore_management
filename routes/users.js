@@ -178,7 +178,7 @@ router.post('/search_stock',function(req,res,next){
         }
          console.log(results)
          //res.redirect('/users/get_stock_search'); 
-        res.render('sys/stock_page_search',{results:results})
+        res.render('sys/stock_page_search',{results:results,id:req.session.username})
      });  
 
 });
