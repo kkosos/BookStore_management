@@ -1,5 +1,4 @@
-var warn_list;
-if(warn_list=="undefined")warn_list=[];
+if(typeof warn_list=="undefined")warn_list=[];
 if(warn_list.length){
 	document.getElementById("warning_icon").style.display="block";
 

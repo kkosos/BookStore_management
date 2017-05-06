@@ -6,13 +6,26 @@ var db = require('./db');
 var connection = db();
 
 function detect_stock(req, res){
+	
    var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + 50 + " AND store='" + req.session.store + "'";
 		 connection.query(sql_str, function(err, results) {
 			if (err) {
 				console.log(err);
 			}
-			console.log(results)
-			res.render('sys/main_page',{results:results});
+			//console.log(results)
+			
+			var sql_str = "SELECT trade_id,name,date FROM trade_record WHERE location='" + req.session.store + "' ORDER BY date DESC, trade_id DESC LIMIT 5" ;
+				 connection.query(sql_str, function(err, trade_result) {
+					if (err) {
+						console.log(err);
+					}
+					
+					res.render('sys/main_page',{results:results,trade_result:trade_result,id:req.session.username});
+
+				 });
+			
+			
+			//res.render('sys/main_page',{results:results,id:req.session.username});
 
 		 });
 }
@@ -22,7 +35,7 @@ function detect_stock(req, res){
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.session.logined){    
-   
+   console.log(req.session.username)
     detect_stock(req, res);
     
     
@@ -118,15 +131,17 @@ router.post('/login', function(req, res, next) {
              // console.log("right")
              
               res.locals.username = username;
-
+		
             //設定session
               req.session.username = username; 
+			  
               req.session.store = results[0].location;
               req.session.logined=true;
               res.locals.authenticated = req.session.logined;
-  	      console.log(req.session.store);
+  	      	  //console.log(req.session.store);
               //res.redirect('/');
-               console.log("done")
+               console.log("Login done")
+			   console.log("user:" + req.session.username)
                //res.redirect('/');
                detect_stock(req, res);
               // res.render('sys/main_page', { title: 'Express' });

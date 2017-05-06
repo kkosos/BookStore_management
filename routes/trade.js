@@ -7,9 +7,46 @@ var set_amount=50;
 /* GET users listing. */
 
 
-router.get('/get_trade',function(req,res,next){   console.log("HAHA")
+function detect_stock(req, res,change){
+   var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + 50 + " AND store='" + req.session.store + "'";
+		 connection.query(sql_str, function(err, results) {
+			if (err) {
+				console.log(err);
+			}
+			console.log(results)
+			if(typeof change=="undefined"&&change!="true")
+				res.render('sys/trade_page',{results:results,id:req.session.username});
+			else{
+				
+				var sql_str = "SELECT trade_id,name,date FROM trade_record WHERE location='" + req.session.store + "'" ;
+				 connection.query(sql_str, function(err, trade_result) {
+					if (err) {
+						console.log(err);
+					}
+					
+						res.render('sys/trade_page_list',{results:results,trade_result:trade_result,id:req.session.username});
+
+				 });
+				
+				
+				
+			
+			}
+		 });
+}
+router.get('/get_trade_list',function(req,res,next){   console.log("HAHA")
+	if(!req.session.logined)res.redirect("/")
 	
-	res.render('sys/trade_page');
+	detect_stock(req, res,"true")
+	
+	
+	
+	
+});
+
+router.get('/get_trade',function(req,res,next){   console.log("HAHA")
+		if(!req.session.logined)res.redirect("/")
+	 detect_stock(req, res)
 });
 router.get('/sell',function(req,res,next){
 	
@@ -23,7 +60,7 @@ router.get('/sell',function(req,res,next){
 				console.log(err);
 			}
 			console.log(results)
-			res.render('sys/trade_page_sell',{results:results});
+			res.render('sys/trade_page_sell',{results:results,id:req.session.username});
 
 		 });
 	
@@ -96,43 +133,21 @@ router.post('/sellit',function(req,res,next){
 				//notify system
 
 			}//out of stock
-		
-		//INSERT INTO `trade_record`(`name`, `date`, `price`, `location`, `backup`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5])
-		
-		 // res.render('sys/trade_page_sell',{results:results})
-		
+
 		var sql_str = "SELECT * FROM Book_Stock WHERE amount<" + set_amount + " AND store='" + req.session.store + "'";
 		 connection.query(sql_str, function(err, results) {
 			if (err) {
 				console.log(err);
 			}
 			console.log(results)
-			if(i==trade_time)res.render('sys/trade_page_sell',{results:results});
+			if(i==trade_time)res.render('sys/trade_page_sell',{results:results,id:req.session.username});
 
 		 });
 		
      });  
 	
-	
-
 });
-/*
-  
 
-     var sql_str = "SELECT * FROM Book_Stock WHERE"
-     if(book_name!=""){sql_str+=" name='"+book_name+"' ";count_flag++;}
-     
-     if(book_price!=""){if(count_flag>0)sql_str+=" AND";sql_str+=" price="+book_price+" ";count_flag++;}
-     if(book_date!=""){if(count_flag>0)sql_str+=" AND";sql_str+=" date='"+book_date+"' ";count_flag++;}
-     if(book_publishment!=""){if(count_flag>0)sql_str+=" AND";sql_str+=" publishment='"+book_publishment+"' ";count_flag++;}
-     if(book_store!=""){if(count_flag)sql_str+=" AND";sql_str+=" store='"+book_store+"' ";count_flag++;}
-     if(book_amount!=""){if(count_flag)sql_str+=" AND";sql_str+=" amout="+book_amount+" ";count_flag++;}
-     if(book_category!=""){if(count_flag)sql_str+=" AND";sql_str+=" category='"+book_category+"' ";count_flag++;}
-     if(book_language!=""){if(count_flag)sql_str+=" AND";sql_str+=" language='"+book_language+"' ";count_flag++;}
-
-     if(!count_flag){sql_str += " store='" + req.session.store + "'" ;}
-
-*/
 
 
 module.exports = router;

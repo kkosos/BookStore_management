@@ -12,59 +12,29 @@
 	
 </head>
 <body>
+<% var data=id ;%>
+<% include side_top_bar%>
 
-<div class="ui fixed menu">
-  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
-  <div class="right menu">
-    <div class="ui dropdown item">	
-		<i  id="alertit" class="alarm icon"></i>
-		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
-		
-		<div id="notifyit" class="massive menu">
-			
-		</div>
+
+
+
+	<div id="main" class="ui grid" >
+
+			<div class="ui four wide column"></div>
+			<div class="ui four wide column">
+
+				<a href="/trade/sell"><i class="external share icon huge"></i>Sell</a></div>
+			<div class="ui four wide column">
+				<a href="/trade/get_trade_list"><i class="list icon huge"></i>
+				trade_lists</a></div>
+			<div class="ui four wide column"></div>
+
 	</div>
-	<a class="item"><i class="user icon"></i>User</a>
-    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
-  </div>
-</div>
 
-<div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a class="item" href="/">
-    <i class="home icon"></i>
-    About
-  </a>
-  <a class="item" href="/users/get_stock">
-    <i class="block layout icon"></i>
-    Stock
-  </a>
-  <a class="item" href="/trade/get_trade">
-    <i class="smile icon"></i>
-    Trade
-  </a>
-   <a class="item">
-    <i class="smile icon"></i>
-    ADD
-  </a>
-</div>
-
-
-
-
-<div id="main" class="ui grid" >
-		
-		<div class="ui four wide column"></div>
-		<div class="ui four wide column">
-			
-			<a href="/trade/sell"><i class="external share icon huge"></i>Sell</a></div>
-		<div class="ui four wide column">
-			<a href="/trade/get_trade"><i class="list icon huge"></i>
-			trade_lists</a></div>
-		<div class="ui four wide column"></div>
-		
-</div>
-
-     
+<script>
+	var warn_list= <%- JSON.stringify(results) %>
+</script>
+     <script src="/javascripts/warning_list.js"></script> 
 </body>
 </html> 
 

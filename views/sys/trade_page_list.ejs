@@ -13,80 +13,29 @@
 </head>
 <body>
 
-
-	
-<div class="ui fixed menu">
-  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
-  <div class="right menu">
-    <div class="ui dropdown item">	
-		<i  id="alertit" class="alarm icon"></i>
-		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
-		
-		<div id="notifyit" class="massive menu">
-			
-		</div>
-	</div>
-	<a class="item"><i class="user icon"></i>User</a>
-    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
-  </div>
-</div>
-
-<div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a class="item" href="/">
-    <i class="home icon"></i>
-    About
-  </a>
-  <a class="item" href="/users/get_stock">
-    <i class="block layout icon"></i>
-    Stock
-  </a>
-  <a class="item" href="/trade/get_trade">
-    <i class="smile icon"></i>
-    Trade
-  </a>
-   <a class="item">
-    <i class="smile icon"></i>
-    ADD
-  </a>
-</div>
+<% var data=id ;%>
+<% include side_top_bar%>
 
 
 <div id="main" style="margin-top:50px;">
-		 <form id="form" class="ui form" action="/trade/sellit" method="POST">
-			<div class="four fields">	
-					<div class="field one wide"></div>
-				  <div class="field five wide">
-				    <label>Book_Name</label>
-				    <input name="name" placeholder="book_name" type="text"  
-                                         >
-				  </div>
-				 <div class="field five wide">
-				    <label>Publishment</label>
-				    <input name="publishment" placeholder="Publishment" type="text"
-					>
-				  </div>
-				 <div class="field five wide">
-				    <label>Store</label>
-				    <input name="store" placeholder="store" type="text"
-					 >
-				  </div>
-				<div class="field five wide">
-				    <label>time</label>
-				    <input name="time" placeholder="time" type="text"
-					 >
-				  </div>
-				<div class="field one wide"></div>
-			</div>
-	         <div class="one fields">	
-				<div class="field one wide"></div>
-				<button class="ui right labeled icon button" type="submit"><i class="right arrow icon"></i>Insert</button>
-			 </div >	
-			<div class="ui error message">
-			    <div class="header">Action Forbidden</div>
-			    <p>You can only sign up for an account once with a given e-mail address.</p>
-			  </div>
-		</form>
-		</div>
+	<div class="ui grid">
+			<div class="ui four wide column"></div>
+			<div class="ui four wide column">
+					<div class="ui buttons">
+						<button class="ui button "><i class="external share icon huge"></i></button>
+						<button class="ui button "><i class="list icon huge"></i></button>
+						<button class="ui button "><i class="list icon huge"></i></button>
+
+					</div>
+
+				</div>
+			<div class="ui four wide column"></div>
+			<div class="ui four wide column"></div>
+	</div>
+	
+	
+	
+</div>
 
  		<script>
 			

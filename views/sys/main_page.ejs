@@ -11,81 +11,95 @@
 	<script src="/javascripts/notify.js"></script> 
 </head>
 <body>
+<% var data=id ;%>
 
-
-	
-<div class="ui fixed menu">
-  <a class="item" id="side_bar_list"><i class="content icon" ></i></a>  
-  <div class="right menu">
-    <div class="ui dropdown item">	
-		<i  id="alertit" class="alarm icon"></i>
-		<a href="/users/get_stock_list?toggle=true" id="warning_icon" style="display:none"><i  class= "red warning icon"></i></a>
-		
-		<div id="notifyit" class="massive menu">
-			
-		</div>
-	</div>
-	<a class="item"><i class="user icon"></i>User</a>
-    <a class="item" href="/logout"><i class="power icon"></i>Logout</a>
-  </div>
-</div>
-
-<div class="ui left demo vertical inverted sidebar labeled icon menu">
-  <a class="item" href="/">
-    <i class="home icon"></i>
-    About
-  </a>
-  <a class="item" href="/users/get_stock">
-    <i class="block layout icon"></i>
-    Stock
-  </a>
-  <a class="item" href="/trade/get_trade">
-    <i class="smile icon"></i>
-    Trade
-  </a>
-   <a class="item">
-    <i class="smile icon"></i>
-    ADD
-  </a>
-</div>
-
+<% include side_top_bar%>
 
 <div id="main" class="ui grid">
-    <h2>Sidenav Push Example</h2>
-  <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
+	<div class="row">		
+		<div class="three wide column"></div>
+		<div class="six wide column">
+				<div class="ui message">
+					<i class="close icon"></i>
+						<div class="header">
+							Welcome back
+						</div>
+					<p>Hello,<%= id %>
+					</p>
+				</div>
+		</div>
+		<div class="six wide column"></div>
+		<div class="two wide column"></div>
+	</div>
+	<div class="row">
+			<div class="three wide column"></div>
+			<div class="six wide column">
+					<% if(results!="") {%>
+					<div class="ui red warnnig message">
+							<div class="header">
+							Some books are going to out of stock 
+						</div>
+						<a href="/users/get_stock_list?toggle=true">Check here!</a>
+					</div>
+					<% } %>
+			
+		
+			</div>
+			<div class="six wide column">		
+				<div class="ui yellow message">
+							<div class="header">
+							A message coming
+						</div>
+						<a href="">Check here!</a>
+				</div>
+						
+			</div>
+			<div class="three wide column"></div>
+	</div>
+	<div class="row">
+				<div class="three wide column"></div>
+				<div class="ten wide column">
+					<table class="ui celled striped table">
+							<thead>
+								<tr>
+									<th colspan="3">
+									Transaction list
+									</th>
+								</tr>
+								<tr>
+									<th>Transaction_id</th>
+									<th>name</th>
+									<th>date</th>
+								</tr>
+							</thead>
 
-        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
-
-        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
-
-        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
-
-        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
-
-        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
-
-        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
-
-        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
-        <p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
-
-        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
-
-        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
-<p>Hey Tony! I like the things you do! Hey Tony! If I could I would be you! You're my one and only tiger, with my one and only taste! You know how to take a breakfast and make it mmm great! Frosted Flakes! They're more than good, they're great!</p>
-
-        <p>Green Acres is the place to be. Farm livin' is the life for me. Land spreadin' out so far and wide. Keep Manhattan, just give me that countryside. New York is where I'd rather stay. I get allergic smelling hay. I just adore a penthouse view. Darling I love you but give me Park Avenue. The chores! The stores! Fresh air! Times Square! You are my wife. Good bye, city life. Green Acres we are there!</p>
-
-        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
-
-        <p>Gathered together from the cosmic reaches of the universe, here in this great Hall of Justice, are the most powerful forces of good ever assembled: Superman! Batman and Robin! Wonder Woman! Aquaman! And The Wonder Twins: Zan and Jayna, with their space monkey, Gleek! Dedicated to prove justice and peace for all mankind!</p>
+							<tbody>
+								<% for(var i in trade_result){ %>
+								<tr>
+									<td><%= trade_result[i].trade_id %></td>
+									<td><%= trade_result[i].name %></td>
+									<td><%= trade_result[i].date %></td>
+								</tr>
+								<% } %>
+								
+							</tbody>
+						</table>
+				</div>
+				<div class="three wide column"></div>	
+	</div>		
+				
+				
+				
 </div>
 
 
-</div>
 <script>
-	var warn_list= <%- JSON.stringify(results) %>
-
+	var warn_list=[];
+	warn_list= <%- JSON.stringify(results) %> ;
+	$('.message .close').on('click',function(){
+							$(this).closest('.message').transition('fade')
+							
+							});
 
 </script>
      <script src="/javascripts/warning_list.js"></script> 

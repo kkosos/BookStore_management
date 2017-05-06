@@ -12,7 +12,7 @@ function detect_stock(req, res){
 				console.log(err);
 			}
 			console.log(results)
-			res.render('sys/stock_page',{results:results});
+			res.render('sys/stock_page',{results:results,id:req.session.username});
 
 		 });
 }
@@ -25,7 +25,7 @@ router.post('/input_stock',function(req,res,next){
   if(req.body.name==""){  
      res.locals.error="Name Field can't be empty"
      res.locals.input = req.body;
-     res.render('sys/stock_page_insert');
+     res.render('sys/stock_page_insert',{id:req.session.username});
     return
   }
   
@@ -43,7 +43,7 @@ router.post('/input_stock',function(req,res,next){
         if(results==""){
          res.locals.error="Can't find book"
          res.locals.input = req.body;
-         res.render('sys/stock_page_insert');
+         res.render('sys/stock_page_insert',{id:req.session.username});
          return
         }
         else{//find the book then update amount
@@ -58,7 +58,7 @@ router.post('/input_stock',function(req,res,next){
 						console.log(err)
 
           
-          res.render('sys/stock_page_insert');
+          res.render('sys/stock_page_insert',{id:req.session.username});
           return;
         
 				});
@@ -173,7 +173,7 @@ router.post('/search_stock',function(req,res,next){
         if(results==""){
           console.log("Found Nothing");
 	  
-	  res.render('sys/stock_page_search',{results:[]})
+	  res.render('sys/stock_page_search',{results:[],id:req.session.username})
           return;
         }
          console.log(results)
@@ -194,7 +194,7 @@ router.get('/get_stock_list',function(req,res,next){
         if (err) {
             console.log(err);
         }	
-		  res.render('sys/stock_page_search',{results:results})
+		  res.render('sys/stock_page_search',{results:results,id:req.session.username})
      });  
 
 });
@@ -208,9 +208,10 @@ router.get('/get_stock',function(req,res,next){
 
 
 router.get('/get_stock_insert',function(req,res,next){ 
-	 res.locals.error="";
+	if(!req.session.logined){res.redirect('/');return;}
+	res.locals.error="";
   	res.locals.input=[];
-    res.render('sys/stock_page_insert');
+    res.render('sys/stock_page_insert',{id:req.session.username});
 
 });
 
