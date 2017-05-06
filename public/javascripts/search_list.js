@@ -14,6 +14,11 @@ function toggle_warn(){
 						td.innerHTML = obj[warn[i]][j];
 					    tr.appendChild(td);
 					}
+					var td = document.createElement("td");
+					var ticon = document.createElement('i');
+					ticon.className="external icon";
+					td.appendChild(ticon)
+					tr.appendChild(td);
 					tb.appendChild(tr);		
 				
 				}
@@ -51,7 +56,11 @@ function reload(){
 
 				var tr = document.createElement("tr");
 				var flag = false;
-				if(obj[i].amount<50)tr.className="negative";
+				var warn_flag = false;
+				if(obj[i].amount<50){
+					warn_flag=true;
+					tr.className="negative";
+				}
 
 				for(var j in obj[i]){
 					//obj[i][j]	
@@ -64,8 +73,18 @@ function reload(){
 
 				}
 
-				if(flag)
+				if(flag){
+					//if match 	
+					if(warn_flag){ //warning stock
+						var td = document.createElement("td");
+						var ticon = document.createElement('i');
+						ticon.className="external icon";
+						td.appendChild(ticon)
+						tr.appendChild(td);
+					}					
 					tb.appendChild(tr);	
+				}
+					
 			}
 	}
 	else{
